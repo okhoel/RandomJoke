@@ -14,6 +14,16 @@ $jokes += {
     foreach ($i in $map[$chars.length-1]) {$story[$i] = $chars[$chars.length-1] + $story[$i]}
     $story -join ' '
 }
+$jokes += {
+    $res = [String]::Empty
+    foreach ($c in "Zva xbar fn ng wrt zåggr irytr zryybz uraar bt sbgonyyra.`nQrg ine qn xwvcg! Wn, wrt fniare uraar yvgg.".ToCharArray()) {
+        $a = [byte]$c
+        if ($a -ge 65 -and $a -le 90) {$a = (($a-52)%26)+65}
+        elseif ($a -ge 97 -and $a -le 122) {$a = (($a-84)%26)+97}
+        $res += [char]$a
+    }
+    $res
+}
 function Get-Jokes {
     return $jokes
 }
