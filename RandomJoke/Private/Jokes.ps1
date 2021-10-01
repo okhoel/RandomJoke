@@ -24,6 +24,35 @@ $jokes += {
     }
     $res
 }
+$jokes += {
+    $KebabString = "ProsjektledeREnPersonSomTrorAtNiDamerKanFåEnBabyPåEnMåned"
+    $res = ""
+    $lastCharUpper = $False
+
+    $res = for ([int]$i = 0; $i -lt $KebabString.Length; $i++) {
+        $char = $KebabString[$i]
+        if ($char -cmatch '[A-ZÆØÅ]') {
+            # uppercase
+            if ($i -eq 0) {
+                $char
+            } elseif ($lastCharUpper) {
+                "`n$Char"
+            } elseif ($KebabString[$i+1] -cmatch '[A-ZÆØÅ]') {
+                "$(([String]$Char).ToLower())"
+            } else {
+                " $(([String]$Char).ToLower())"
+            }
+            $lastCharUpper = $True
+        } else {
+            # Lowercase
+            $char
+            $lastCharUpper = $False
+        }
+    }
+
+    "$($res -join '')."
+}
+
 function Get-Jokes {
     return $jokes
 }
