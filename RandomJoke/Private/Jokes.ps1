@@ -52,6 +52,28 @@ $jokes += {
 
     "$($res -join '')."
 }
+$jokes += {
+    $emoji = @{
+        '1' = '😋';
+        '2' = '😎';
+        '3' = '😃';
+        '4' = '😄';
+        '5' = '😁';
+        '6' = '😂';
+        '7' = '🤣';
+        '8' = '🤢';
+        '9' = '🤮';
+    }
+
+    $plansje = for ($i=1;$i -lt 10;$i++) {
+        [pscustomobject]@{
+            konsum = "$('🍺' * $i)"
+            effekt= "$($emoji.[string]$i)"
+        }
+    }
+
+    $plansje | format-table -auto
+}
 
 function Get-Jokes {
     return $jokes
