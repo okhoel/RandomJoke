@@ -1,3 +1,6 @@
+function Get-RandomJokeLanguages{
+    [Language].GetEnumNames()
+}
 function Get-RandomJoke{
     [CmdletBinding()]
     param (
