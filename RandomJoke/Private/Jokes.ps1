@@ -52,6 +52,8 @@ $jokes += [Joke]::new("Norwegian", {
 
     "$($res -join '')."
 })
+<#
+This joke doesn't seem to survive .tostring().
 $jokes += [Joke]::new("Norwegian", {
     $emoji = @{
         '1' = '😋';
@@ -68,12 +70,13 @@ $jokes += [Joke]::new("Norwegian", {
     $plansje = for ($i=1;$i -lt 10;$i++) {
         [pscustomobject]@{
             konsum = "$('🍺' * $i)"
-            effekt= "$($emoji.[string]$i)"
+            effekt = "$($emoji.[string]$i)"
         }
     }
 
     $plansje | format-table -auto
 })
+#>
 $jokes += [Joke]::new("English", {
     # TCP Jokes can be long, so it is stored in a ZIP-compressed byte string.
     [String]$compressedTCPJoke = "31,139,8,0,0,0,0,0,0,10,173,84,193,82,194,48,20,124,103,190,162,55,46,140,35,95,224,56,94,112,60,200,129,11,199,88,58,16,169,45,147,4,164,127,239,238,75,44,69,64,45,58,153,242,146,102,223,190,183,155,148,137,88,25,73,38,143,50,148,5,98,137,245,90,10,204,130,212,248,93,97,110,196,97,102,240,204,228,65,166,136,175,216,35,234,70,6,50,65,44,49,106,229,121,71,220,98,69,174,70,231,125,57,239,192,57,71,244,127,236,235,89,158,90,6,246,199,204,216,233,161,179,203,185,235,148,75,69,54,101,253,92,243,30,187,69,135,159,43,131,254,155,43,181,19,245,118,5,207,87,13,145,197,200,139,246,21,90,22,15,108,165,254,6,101,60,199,68,134,112,228,67,9,38,175,239,198,114,155,88,114,224,201,20,59,183,186,187,82,28,185,121,43,50,96,248,198,225,201,245,44,220,17,122,1,12,149,103,224,169,219,252,157,118,101,82,149,128,97,177,191,236,228,69,5,62,117,72,29,17,191,129,210,74,107,242,238,84,23,93,57,245,118,169,149,62,79,209,157,113,37,250,101,122,251,242,91,71,190,247,162,82,213,123,40,164,178,60,249,112,234,15,145,60,219,126,14,241,123,161,47,30,149,29,70,163,92,7,47,162,34,162,217,179,213,85,87,153,69,118,161,117,227,93,227,13,250,255,255,136,15,108,240,6,252,184,4,0,0"
@@ -85,7 +88,7 @@ $jokes += [Joke]::new("English", {
     $gzipStream.Close()
     $in.Close()
     $TCPJokeUncompressedBytes = [byte[]]$byteOutArray = $out.ToArray()
-    $TCPJokeString = [System.Text.Encoding]::ASCII.GetString($TCPJokeUncompressedBytes)
+    [System.Text.Encoding]::ASCII.GetString($TCPJokeUncompressedBytes)
 })
 
 enum Language{
@@ -115,5 +118,6 @@ function Get-Jokes {
         [Parameter()]
         [Language]$Language
     )
-    return $jokes | Where-Object {$_.Language -eq $Language}
+    
+    return $jokes | Where-Object {$_.Language -eq $Language})
 }
