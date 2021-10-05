@@ -97,7 +97,7 @@ $jokes += [Joke]::new("English", {
     $gzipStream.CopyTo( $out )
     $gzipStream.Close()
     $in.Close()
-    $TCPJokeUncompressedBytes = [byte[]]$byteOutArray = $out.ToArray()
+    [byte[]]$TCPJokeUncompressedBytes = $out.ToArray()
     [System.Text.Encoding]::ASCII.GetString($TCPJokeUncompressedBytes)
 })
 
@@ -108,5 +108,5 @@ function Get-Jokes {
         [Language]$Language
     )
     
-    return $jokes | Where-Object {$_.Language -eq $Language})
+    return $jokes | Where-Object {$_.Language -eq $Language}
 }
