@@ -8,8 +8,9 @@ function Get-RandomJoke{
         [Language]$Language = "Norwegian"
     )
     $jokes = Get-Jokes -Language $Language
+
     if ($jokes.length -gt 0){
-        (Get-Random $jokes).toString()
+        ($jokes | Get-Random).toString()
     }
     else {
         "No jokes in $Language"
