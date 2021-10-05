@@ -1,4 +1,14 @@
 ﻿#Encoding should be UTF-8 with BOM
+
+Add-Type @'
+public enum Language{
+    Norwegian,
+    English
+}
+'@
+
+. $PSScriptRoot\Classes.ps1
+
 [Joke[]]$jokes = @()
 $jokes += [Joke]::new("Norwegian", {"Katten med slips!"})
 $jokes += [Joke]::new("Norwegian", {[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("SMO4cnQgb20gc3ZlbnNrZW4gc29tIGdpa2sgdGlsIHBvbGl0aWV0IGZvcmRpIHBhcmFwbHllbiBoYW5zIHZhciBzbMOldHQgbmVkPw=="))})
@@ -91,27 +101,6 @@ $jokes += [Joke]::new("English", {
     [System.Text.Encoding]::ASCII.GetString($TCPJokeUncompressedBytes)
 })
 
-enum Language{
-    Norwegian
-    English
-}
-
-class Joke {
-    [Language]$Language
-    [ScriptBlock]$Content
-
-    Joke(
-        [Language]$l,
-        [ScriptBlock]$c    
-    ){
-        $this.Language = $l
-        $this.Content = $c
-    }
-
-    [string]toString() {
-        return (Invoke-Command -ScriptBlock $this.Content)
-    }
-}
 function Get-Jokes {
     [CmdletBinding()]
     param (
