@@ -102,14 +102,16 @@ $jokes += [Joke]::new("English", {
     "Christmas is the same as Halloween:`n$([Convert]::ToString($d,10)) DEC = $([Convert]::ToString($d,8)) OCT"
 })
 $jokes += [Joke]::new("Norwegian", {
+    $r = ""
     $d = " ,.?FNaefiklmorå"
-    $e = "46e0"
-    foreach ($i in 0..(($e.Length)-1)) {$d[[convert]::ToInt16($e[$i],16)]} 
-
-
-
-
-}
+    $e = "BG4Qj+CP4I/jBXkQj+CP4JqnCP4QjeCP4I/gtsI="
+    $bs = [convert]::FromBase64String($e)
+    foreach ($b in $bs) {
+        $r += $d[$b -shr 4]
+        $r += $d[$b -band 15]
+    }
+    $r
+})
 
 function Get-Jokes {
     [CmdletBinding()]
