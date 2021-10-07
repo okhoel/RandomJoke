@@ -101,6 +101,15 @@ $jokes += [Joke]::new("English", {
     $d = 25
     "Christmas is the same as Halloween:`n$([Convert]::ToString($d,10)) DEC = $([Convert]::ToString($d,8)) OCT"
 })
+$jokes += [Joke]::new("Norwegian", {
+    $d = " ,.?FNaefiklmorå"
+    $e = "46e0"
+    foreach ($i in 0..(($e.Length)-1)) {$d[[convert]::ToInt16($e[$i],16)]} 
+
+
+
+
+}
 
 function Get-Jokes {
     [CmdletBinding()]
