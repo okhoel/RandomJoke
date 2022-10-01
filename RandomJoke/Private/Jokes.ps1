@@ -126,6 +126,10 @@ $jokes += [Joke]::new("Norwegian", {
     $r
 })
 
+$jokes += [Joke]::new("English", {
+    (-split"I made a UDP joke but I don't care if you get it" | Sort-Object { Get-Random })-join ' '
+})
+
 function Get-Jokes {
     [CmdletBinding()]
     param (
