@@ -146,6 +146,12 @@ $jokes += [Joke]::new("English", {
     $joke
 })
 
+$jokes += [Joke]::new("English", {
+    $num = 2
+    $errors = "caching", "naming", "off-by-one"
+    "There are $num hard problems in computer science: $(0..$num|ForEach-Object {"$($errors[$_])$(if($_ -lt $num){', '}else{' '})"})errors"
+})
+
 function Get-Jokes {
     [CmdletBinding()]
     param (
