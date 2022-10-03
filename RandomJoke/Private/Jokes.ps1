@@ -146,6 +146,11 @@ $jokes += [Joke]::new("English", {
     $joke
 })
 
+$jokes += [Joke]::new("English", {
+    $amount = 1
+    "{0:P0} of people who confuse correlation with causation end up dead." -f $amount
+})
+
 function Get-Jokes {
     [CmdletBinding()]
     param (
