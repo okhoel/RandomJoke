@@ -130,6 +130,22 @@ $jokes += [Joke]::new("English", {
     (-split"I made a UDP joke but I don't care if you get it" | Sort-Object { Get-Random })-join ' '
 })
 
+$jokes += [Joke]::new("English", {
+    $stack = New-Object System.Collections.Generic.Stack[String]
+    $ekoj =  ".now 'i' ?elbairav pool rof eman tseb eht rof etabed eht now ohW"
+    $joke = ""
+
+    for ($i = 0; $i -lt $ekoj.Length; $i++) {
+        $stack.Push([String]$ekoj[$i])
+    }
+
+    for ($i = 0; $i -lt $ekoj.Length; $i++) {
+        $joke += $stack.Pop()
+    }
+
+    $joke
+})
+
 function Get-Jokes {
     [CmdletBinding()]
     param (
