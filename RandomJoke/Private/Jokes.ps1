@@ -157,6 +157,10 @@ $jokes += [Joke]::new("English", {
     "{0:P0} of people who confuse correlation with causation end up dead." -f $amount
 })
 
+$jokes += [Joke]::new("English", {
+    [System.Web.HttpUtility]::UrlDecode("What%20do%20you%20call%20a%20doctor%20who%20fixes%20websites?%20A%20URLogist")
+})
+
 function Get-Jokes {
     [CmdletBinding()]
     param (
