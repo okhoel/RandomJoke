@@ -10,7 +10,6 @@ public enum Language{
 . $PSScriptRoot\Classes.ps1
 
 [Joke[]]$jokes = @()
-$jokes += [Joke]::new("Norwegian", {"Katten med slips!"})
 $jokes += [Joke]::new("Norwegian", {[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("SMO4cnQgb20gc3ZlbnNrZW4gc29tIGdpa2sgdGlsIHBvbGl0aWV0IGZvcmRpIHBhcmFwbHllbiBoYW5zIHZhciBzbMOldHQgbmVkPw=="))})
 $jokes += [Joke]::new("Norwegian", {
     $dict = "andre", "at", "av", "beroligende", "blir", "deg", "dem", "den", "det", "død", "en", "er", "et", "faller", "finner", "forsikre", "fram", "først", "gjøre", "han", "hjelpe", "hva", "høres", "i", "jeg", "jegere", "jegeren", "kan", "min", "mobiltelefonen", "må", "nødsentralen", "nå", "når", "og", "OK", "om", "operatøren", "oss", "plutselig", "ringer", "skal", "skogen", "skudd", "slapp", "stille", "svarer", "så", "til", "to", "ute", "vennen", "vi"
