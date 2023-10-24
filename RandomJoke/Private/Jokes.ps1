@@ -171,6 +171,12 @@ $jokes += [Joke]::new("English", {
     "What do you get when you reverse $($word)?`n`n$(-join $word[$word.Length..0])!"
 })
 
+$jokes += [Joke]::new("English", {
+    $content = "48-6F-77-20-64-6F-20-79-6F-75-20-74-65-6C-6C-20-74-68-65-20-64-69-66-66-65-72-65-6E-63-65-20-62-65-74-77-65-65-6E-20-61-20-63-72-6F-63-6F-64-69-6C-65-20-61-6E-64-20-61-6E-20-61-6C-6C-69-67-61-74-6F-72-3F-20-59-6F-75-20-77-69-6C-6C-20-73-65-65-20-6F-6E-65-20-6C-61-74-65-72-20-61-6E-64-20-6F-6E-65-20-69-6E-20-61-20-77-68-69-6C-65-2E"
+    $result = foreach ($x in $content -split '-') {[char][int]"0x$x"}
+    $result -join ''
+})
+
 function Get-Jokes {
     [CmdletBinding()]
     param (
