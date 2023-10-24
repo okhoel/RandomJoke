@@ -161,6 +161,11 @@ $jokes += [Joke]::new("English", {
     [System.Web.HttpUtility]::UrlDecode("What%20do%20you%20call%20a%20doctor%20who%20fixes%20websites?%20A%20URLogist")
 })
 
+$jokes += [Joke]::new("Norwegian", {
+    $dyr = "mammuten"
+    "Hvorfor er $dyr utdødd? Fordi det ikke var flere $($dyr -replace 'm','p' -replace 'n','r') igjen!"
+})
+
 $jokes += [Joke]::new("English", {
     $word = "desserts"
     "What do you get when you reverse $($word)?`n`n$(-join $word[$word.Length..0])!"
