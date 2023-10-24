@@ -166,6 +166,11 @@ $jokes += [Joke]::new("Norwegian", {
     "Hvorfor er $dyr utdødd? Fordi det ikke var flere $($dyr -replace 'm','p' -replace 'n','r') igjen!"
 })
 
+$jokes += [Joke]::new("English", {
+    $word = "desserts"
+    "What do you get when you reverse $($word)?`n`n$(-join $word[$word.Length..0])!"
+})
+
 function Get-Jokes {
     [CmdletBinding()]
     param (
